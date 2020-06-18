@@ -3,15 +3,42 @@
   <head>
     <meta charset="utf-8" />
     <title>Vue.js Test</title>
+    <link rel="stylesheet" href="main.css" />
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
   </head>
   <body>
     <div id="example">
-      <p>
-        <button @click="countUp()">{{ count }} 回</button>
-      </p>
-      <p>現在時刻（メソッド）： {{ getDate() }}</p>
-      <p>現在時刻（算出プロパティ）： {{ date }}</p>
+      <ul class="tabs-menu">
+        <li
+          :class="{active: activeTab === 'tabs-1'}"
+          @click="activeTab = 'tabs-1'"
+        >
+          タブ1
+        </li>
+        <li
+          :class="{active: activeTab === 'tabs-2'}"
+          @click="activeTab = 'tabs-2'"
+        >
+          タブ2
+        </li>
+        <li
+          :class="{active: activeTab === 'tabs-3'}"
+          @click="activeTab = 'tabs-3'"
+        >
+          タブ3
+        </li>
+      </ul>
+      <section class="tabs-content">
+        <section v-show="activeTab === 'tabs-1'">
+          <p>タブ1の内容が入ります。</p>
+        </section>
+        <section v-show="activeTab === 'tabs-2'">
+          <p>タブ2の内容が入ります。</p>
+        </section>
+        <section v-show="activeTab === 'tabs-3'">
+          <p>タブ3の内容が入ります。</p>
+        </section>
+      </section>
     </div>
     <script src="main.js"></script>
   </body>
